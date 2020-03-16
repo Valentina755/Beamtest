@@ -8,6 +8,15 @@ namespace ConsoleApp2
 {
     class Program
     {
+        static double GetKND(double[] F, double dth)
+        {
+            double sum=0;
+            for (int i = 0; i< F.Length; i++)
+            {
+                sum = sum + F[i] * F[i] * Math.Cos(i * dth * Math.PI / 180);
+            }
+            return 2/(sum*dth*Math.PI/180);
+        }
         static double Beam(double th, double k, double l)
         {
             double kl = k * l;
@@ -37,6 +46,9 @@ namespace ConsoleApp2
             {
                 Console.WriteLine("{0}-{1}", Th[i], F[i]);
             }
+            Console.WriteLine("Расчет КНД:");
+            double D = GetKND(F, dth);
+            Console.WriteLine("КНД=" + D);
             Console.ReadLine();
         }
 
